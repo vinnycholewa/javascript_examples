@@ -1,0 +1,60 @@
+function getSleepHours(day){
+  switch(day){
+    case 'monday':
+      return 8;
+      break;
+    case 'tuesday':
+      return 8;
+      break;
+    case 'wednesday':
+      return 7;
+      break;
+    case 'thursday':
+      return 7;
+      break;
+    case 'friday':
+      return 8;
+      break;
+    case 'saturday':
+      return 8;
+      break;
+    case 'sunday':
+      return 7;
+      break;
+    default:
+      return 'select correct day';}
+}
+
+/*test
+console.log(getSleepHours('monday'))
+*/
+
+function getActualSleepHours() {
+  return getSleepHours('monday') +
+    getSleepHours('tuesday') +
+    getSleepHours('wednesday') +
+    getSleepHours('thursday') +
+    getSleepHours('friday') +
+    getSleepHours('saturday') +
+    getSleepHours('sunday'); 
+}
+
+const getIdealSleepHours = () => {
+  var idealHours = 8;
+  return idealHours*7;
+}
+
+/* testing
+console.log(getActualSleepHours())
+console.log(getIdealSleepHours())
+*/
+
+const calculateSleepDebt = () => {
+  var actualSleepHours = getActualSleepHours()
+  var idealSleepHours = getIdealSleepHours()
+  if (actualSleepHours === idealSleepHours) {
+    console.log('Liar.');} else if (actualSleepHours > idealSleepHours) {
+      console.log(`Extreme Liar! You did not get ${(actualSleepHours-idealSleepHours)} positve sleep!`);
+    } else {console.log('You need to sleep ' + (idealSleepHours-actualSleepHours) + ' more hours of sleep to catchup');}};
+
+console.log(calculateSleepDebt())
