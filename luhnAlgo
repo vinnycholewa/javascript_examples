@@ -1,0 +1,45 @@
+function validateCred(arrayNums) {
+  let array = arrayNums.join('')
+  var sum= 0,
+  alt=false,
+  i=array.length-1,
+  num;
+    if (array.length < 13 || array.length > 19){
+        return false;
+    }
+
+    while (i >= 0){
+
+        //get the next digit
+        num = parseInt(array.charAt(i), 10);
+
+        //if it's not a valid number, abort
+        if (isNaN(num)){
+            return false;
+        }
+
+        //if it's an alternate number...
+        if (alt) {
+            num *= 2;
+            if (num > 9){
+                num = (num % 10) + 1;
+            }
+        } 
+
+        //flip the alternate bit
+        alt = !alt;
+
+        //add to the rest of the sum
+        sum += num;
+
+        //go to next digit
+        i--;
+    }
+
+    //determine if it's valid
+    if (sum % 10 == 0) {
+      return(`Card number ${array} is Valid.`)
+    } else {
+      return(`Card number ${array} is Invalid.`)
+    }
+}
